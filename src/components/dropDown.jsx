@@ -3,6 +3,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import 'date-input-polyfill';
 
 const DropDown = ({title, data, index_column, index_row, content2, content, dropValue, typeArr}) => {
     const [result, setResult] = useState(data);
@@ -41,16 +42,16 @@ const DropDown = ({title, data, index_column, index_row, content2, content, drop
 
 
 
-                {/*{typeArr === 'date'*/}
+                {/*{typeArr[index_column] === 'date'*/}
                 {/*    ?*/}
                 {/*    <Form.Control*/}
+                {/*    data-date-format="dd/mm/yyyy"*/}
                 {/*    name="text"*/}
                 {/*    type={typeArr[index_column]}*/}
                 {/*    value={result}*/}
                 {/*    defaultValue={result}*/}
                 {/*    onChange={onChange}*/}
-                {/*    required*/}
-                {/*    pattern="\d{2}-\d{2}-\d{4}"*/}
+
                 {/*/> : <Form.Control*/}
                 {/*        name="text"*/}
                 {/*        type={typeArr[index_column]}*/}

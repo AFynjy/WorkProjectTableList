@@ -6,6 +6,7 @@ import TableData from "../components/Table";
 import Dropdown from "../components/dropDown";
 import { ExportCSV } from "../components/ExportCSV";
 
+
 const data = [
   [
     "Рег. номер МКС в СЭД",
@@ -133,12 +134,24 @@ const TablePage = () => {
     setContent(content2);
     event.preventDefault();
   };
+  const onClick = (event) =>{
+    const a = JSON.parse(JSON.stringify(content));
+    a[a.length] = [['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-'],['-']]
+    setContent(a)
+  }
 
   const fileName = "Форма списка";
 
   return (
     <div className="App">
       <div>
+        <Button
+            style={{ margin: "1% 0 1% 87%"}}
+            onClick={onClick}
+        >
+          Добавить новую экспертизу
+        </Button>
+
         {modal && (
           <Modal onClose={() => setModal(false)} title="Форма карточки">
             <Form style={{display: 'flex', flexFlow: 'column wrap'}} onSubmit={onSubmit}>
@@ -170,12 +183,14 @@ const TablePage = () => {
         )}
       </div>
       <TableData
+        typeArr={typeArr}
         title={content[0]}
         data={content.slice(2)}
         setModal={setModal}
         setModalRow={setModalRow}
         setModalRowIndex={setModalRowIndex}
       />
+
       <ExportCSV csvData={content} fileName={fileName} />
     </div>
   );
